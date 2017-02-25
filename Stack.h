@@ -6,7 +6,7 @@
 struct Node {
     char c;
     Node* next = NULL;
-}
+};
 
 class Stack {
     public:
