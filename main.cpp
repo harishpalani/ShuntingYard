@@ -76,7 +76,15 @@ char* toPostfix(char *infix) {
         }
         
         // Check if the character is a right parenthesis
-        else if(infix[iInfix] == ')'){
+        else if (infix[iInfix] == ')') {
+            while (s.peek() != '(') {
+                postfix[iPostfix++] = s.pop();
+                postfix[iPostfix++] = ' ';
+                if (s.peek() == 0) {
+                    cout << "The parantheses are mismatched." << endl;
+                    break;
+                }
+            }
             s.pop();
             iInfix++;
         }
