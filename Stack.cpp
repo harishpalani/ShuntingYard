@@ -1,6 +1,1 @@
-#ifndef STACK_H
-#define STACK_H
-
-
-
-#endif
+#include "Stack.h"
