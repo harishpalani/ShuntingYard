@@ -69,6 +69,11 @@ char* toPostfix(char *infix) {
             }           
             stack.push(infix[iInfix++]);
         }
+        
+        // Check if the character is a left parenthesis
+        else if (infix[indexin] == '(') {
+            stack.push(infix[iInfix++]);
+        }
     }
 }
 
