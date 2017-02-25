@@ -25,7 +25,7 @@ int main() {
         cout << "Infix: " << infix << endl;
         
         // Convert infix to postfix & display
-        char* postfix = toPosfix(input);
+        char* postfix = toPostfix(infix);
         cout << "Postfix: " << postfix << endl;
         delete[] postfix;
     }
@@ -57,33 +57,33 @@ char* toPostfix(char *infix) {
                  infix[iInfix] == '*' || infix[iInfix] == '/' || 
                  infix[iInfix] == '^') {
             
-            while (stack.peek() == '+' || stack.peek() == '-' || 
-                   stack.peek() == '*' || stack.peek() == '/' || 
-                   stack.peek() == '^') && 
+            while ((s.peek() == '+' || s.peek() == '-' || 
+                   s.peek() == '*' || s.peek() == '/' || 
+                   s.peek() == '^') && 
                    ((infix[iInfix] != '^') &&  
-                    (precedence(infix[iInfix]) <= precedence(stack.peek()))) || 
+                    (precedence(infix[iInfix]) <= precedence(s.peek()))) || 
                    ((infix[iInfix] == '^') && 
-                    (precedence(infix[iInfix]) < precedence(stack.peek())))) {
-                postfix[iPostfix++] = stack.pop();
+                    (precedence(infix[iInfix]) < precedence(s.peek())))) {
+                postfix[iPostfix++] = s.pop();
                 postfix[iPostfix++] = ' ';
             }           
-            stack.push(infix[iInfix++]);
+            s.push(infix[iInfix++]);
         }
         
         // Check if the character is a left parenthesis
         else if (infix[iInfix] == '(') {
-            stack.push(infix[iInfix++]);
+            s.push(infix[iInfix++]);
         }
         
         // Check if the character is a right parenthesis
         else if(infix[iInfix] == ')'){
-            stack.pop();
+            s.pop();
             iInfix++;
         }
         
         // Infix expression has been parsed completely!
-        while (stack.peek()) {
-            postfix[iPostfix++] = stack.pop();
+        while (s.peek()) {
+            postfix[iPostfix++] = s.pop();
             postfix[iPostfix++] = ' ';
         }
         postfix[iPostfix - 1] = 0;
