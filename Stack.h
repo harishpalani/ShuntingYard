@@ -1,6 +1,8 @@
 #ifndef STACK_H
 #define STACK_H
 
+#include <iostream>
+
 struct Node {
     char c;
     Node* next = NULL;
