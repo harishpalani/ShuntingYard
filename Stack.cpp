@@ -20,6 +20,6 @@ char Stack::pop() {
 void Stack::push(char c) {
     Node* n = new Node();
     n->next = head;
-    n->c = token;
+    n->c = c;
     head = n;
 }
