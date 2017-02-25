@@ -80,6 +80,15 @@ char* toPostfix(char *infix) {
             stack.pop();
             iInfix++;
         }
+        
+        // Infix expression has been parsed completely!
+        while (stack.peek()) {
+            postfix[iPostfix++] = stack.pop();
+            postfix[iPostfix++] = ' ';
+        }
+        postfix[iPostfix - 1] = 0;
+        
+        return postfix;
     }
 }
 
