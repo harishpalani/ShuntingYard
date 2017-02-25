@@ -6,6 +6,19 @@ char Stack::peek() {
 }
 
 char Stack::pop() {
+<<<<<<< HEAD
+    if (head != NULL){
+        char temp = head->c;
+        Node* topOfStack = head;
+        head = head->next;
+        delete topOfStack;
+        return temp;
+    }
+    
+    return 0;
+}
+
+void Stack::push(char c) {
     if (head != NULL){
         char temp = head->c;
         Node* topOfStack = head;
